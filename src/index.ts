@@ -5,8 +5,6 @@ import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes";
 require('dotenv').config();
 
 
-// It is recommended that you use your own RPC endpoint.
-// This RPC endpoint is only for demonstration purposes so that this example will run.
 const connection = new Connection('https://api.mainnet-beta.solana.com');
 
 const secretkey = process.env.PRIVATE_KEY as string;
@@ -37,7 +35,7 @@ async function main() {
             transaction.sign([wallet.payer]);
             const latestBlockHash = await connection.getLatestBlockhash();
 
-            // Execute the transaction
+
             const rawTransaction = transaction.serialize()
             const txid = await connection.sendRawTransaction(rawTransaction, {
                 skipPreflight: true,
